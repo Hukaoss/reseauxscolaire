@@ -1,0 +1,5 @@
+body { font-family: sans-serif; background: #f4f4f4; text-align: center; }
+textarea, input { width: 80%; padding: 5px; margin: 5px; }
+.post { background: white; margin: 10px auto; padding: 10px; border-radius: 10px; max-width: 600px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; }
+ul { text-align: left; padding-left: 20%; }
