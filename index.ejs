@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><title>Mini Réseau</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+  <h1>🔥 Mini Réseau 🔥</h1>
+  <% if (user) { %>
+    <p>Connecté en tant que <strong><%= user.username %></strong></p>
+    <a href="/logout">Déconnexion</a>
+    <form method="post" action="/post">
+      <textarea name="content" required placeholder="Ton message..."></textarea>
+      <button type="submit">Poster</button>
+    </form>
+  <% } else { %>
+    <a href="/login">Se connecter</a> | <a href="/register">S'inscrire</a>
+  <% } %>
+  <div class="feed">
+    <% posts.slice().reverse().forEach(post => { %>
+      <div class="post">
+        <img src="<%= post.avatar %>" class="avatar">
+        <strong><%= post.user %></strong>
+        <p><%= post.content %></p>
+        <form method="post" action="/like/<%= post.id %>">
+          <button>❤️ <%= post.likes.length %></button>
+        </form>
+        <% if (user) { %>
+          <form method="post" action="/comment/<%= post.id %>">
+            <input name="comment" placeholder="Commentaire" required>
+            <button>Commenter</button>
+          </form>
+        <% } %>
+        <ul>
+          <% post.comments.forEach(c => { %>
+            <li><strong><%= c.user %></strong>: <%= c.text %></li>
+          <% }); %>
+        </ul>
+        <% if (user && user.isAdmin) { %>
+          <form method="post" action="/delete/<%= post.id %>">
+            <button>Supprimer</button>
+          </form>
+        <% } %>
+      </div>
+    <% }); %>
+  </div>
+</body></html>
