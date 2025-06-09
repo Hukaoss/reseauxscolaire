@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html><head><title>Register</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+  <h1>Inscription</h1>
+  <form method="post" action="/register" enctype="multipart/form-data">
+    <input name="username" placeholder="Pseudo" required><br>
+    <input type="password" name="password" placeholder="Mot de passe" required><br>
+    <input type="file" name="avatar"><br>
+    <input type="text" name="admin_secret" placeholder="Code admin (laisse vide si pas admin)"><br>
+    <button type="submit">S'inscrire</button>
+  </form>
+</body></html>
